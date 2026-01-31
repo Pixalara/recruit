@@ -7,21 +7,45 @@ import {
 } from "react-router-dom";
 
 import "./App.css";
+<<<<<<< HEAD
 import { supabase } from "./supabaseClient";
 
 /* Layout */
 import Layout from "./components/Layout";
 
 /* Auth & Home */
+=======
+
+/* =========================
+   LAYOUT
+========================= */
+import Layout from "./components/Layout";
+
+/* =========================
+   AUTH & HOME
+========================= */
+>>>>>>> origin/HL-01
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
+<<<<<<< HEAD
 /* Dashboards */
 import AdminDashboard from "./pages/AdminDashboard";
 import HRDashboard from "./pages/HRDashboard";
 
 /* Intern */
+=======
+/* =========================
+   DASHBOARDS
+========================= */
+import AdminDashboard from "./pages/AdminDashboard";
+import HRDashboard from "./pages/HRDashboard";
+
+/* =========================
+   INTERN RECRUITMENT FLOW
+========================= */
+>>>>>>> origin/HL-01
 import InternRecruitment from "./pages/InternRecruitment";
 import InternCandidates from "./pages/InternCandidates";
 import Shortlisted from "./pages/Shortlisted";
@@ -29,7 +53,13 @@ import Interviewed from "./pages/Interviewed";
 import Selected from "./pages/Selected";
 import Rejected from "./pages/Rejected";
 
+<<<<<<< HEAD
 /* Employee */
+=======
+/* =========================
+   EMPLOYEE RECRUITMENT
+========================= */
+>>>>>>> origin/HL-01
 import EmployeeRecruitment from "./pages/EmployeeRecruitment";
 import EmployeeNew from "./pages/EmployeeNew";
 import EmployeeCandidates from "./pages/EmployeeCandidates";
@@ -38,11 +68,18 @@ import EmployeeInterviewed from "./pages/EmployeeInterviewed";
 import EmployeeSelected from "./pages/EmployeeSelected";
 import EmployeeRejected from "./pages/EmployeeRejected";
 
+<<<<<<< HEAD
 /* Interview / Assignment */
+=======
+/* =========================
+   INTERVIEW / ASSIGNMENT
+========================= */
+>>>>>>> origin/HL-01
 import InterviewEvaluation from "./pages/InterviewEvaluation";
 import Assignment from "./pages/InternAssignment";
 import EmployeeAssignment from "./pages/EmployeeAssignment";
 
+<<<<<<< HEAD
 /* Admin */
 import AdminCandidates from "./pages/AdminCandidates";
 import AdminAuditLogs from "./pages/AdminAuditLogs";
@@ -51,12 +88,17 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [userRole, setUserRole] = useState(null);
   const [loading, setLoading] = useState(true);
+=======
+function App() {
+  const [theme, setTheme] = useState("dark");
+>>>>>>> origin/HL-01
 
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
 
   const toggleTheme = () => {
+<<<<<<< HEAD
     setTheme(prev => (prev === "dark" ? "light" : "dark"));
   };
 
@@ -100,10 +142,25 @@ function App() {
       <Routes>
         <Route element={<Layout theme={theme} toggleTheme={toggleTheme} />}>
           {/* Public */}
+=======
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
+  return (
+    <Router>
+      <Routes>
+        {/* =========================
+            APP LAYOUT (Navbar + Outlet)
+        ========================= */}
+        <Route element={<Layout theme={theme} toggleTheme={toggleTheme} />}>
+
+          {/* HOME & AUTH */}
+>>>>>>> origin/HL-01
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
 
+<<<<<<< HEAD
           {/* Admin */}
           <Route
             path="/admin-dashboard"
@@ -153,6 +210,24 @@ function App() {
             path="/employee-recruitment"
             element={userRole === "hr" ? <EmployeeRecruitment /> : <Navigate to="/login" />}
           >
+=======
+          {/* DASHBOARDS */}
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/hr-dashboard" element={<HRDashboard />} />
+
+          {/* INTERN RECRUITMENT */}
+          <Route path="/intern-recruitment" element={<InternRecruitment />} />
+          <Route path="/intern-candidates" element={<InternCandidates />} />
+          <Route path="/shortlisted" element={<Shortlisted />} />
+          <Route path="/interviewed" element={<Interviewed />} />
+          <Route path="/selected" element={<Selected />} />
+          <Route path="/rejected" element={<Rejected />} />
+
+          {/* =========================
+              EMPLOYEE RECRUITMENT (NESTED – FIXED)
+          ========================= */}
+          <Route path="/employee-recruitment" element={<EmployeeRecruitment />}>
+>>>>>>> origin/HL-01
             <Route index element={<Navigate to="new" replace />} />
             <Route path="new" element={<EmployeeNew />} />
             <Route path="candidates" element={<EmployeeCandidates />} />
@@ -162,11 +237,31 @@ function App() {
             <Route path="rejected" element={<EmployeeRejected />} />
           </Route>
 
+<<<<<<< HEAD
           <Route path="/interview-evaluation" element={userRole === "hr" ? <InterviewEvaluation /> : <Navigate to="/login" />} />
           <Route path="/interview-assignment" element={userRole === "hr" ? <Assignment /> : <Navigate to="/login" />} />
           <Route path="/employee-assignment" element={userRole === "hr" ? <EmployeeAssignment /> : <Navigate to="/login" />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
+=======
+          {/* INTERVIEW / ASSIGNMENT */}
+          <Route
+            path="/interview-evaluation"
+            element={<InterviewEvaluation />}
+          />
+          <Route
+            path="/interview-assignment"
+            element={<Assignment />}
+          />
+          <Route
+            path="/employee-assignment"
+            element={<EmployeeAssignment />}
+          />
+
+          {/* FALLBACK */}
+          <Route path="*" element={<Navigate to="/hr-dashboard" replace />} />
+
+>>>>>>> origin/HL-01
         </Route>
       </Routes>
     </Router>

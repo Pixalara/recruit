@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
@@ -57,11 +58,31 @@ const Signup = () => {
     alert("Account created successfully. Please login.");
     navigate("/login");
     setLoading(false);
+=======
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../App.css';
+
+const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('HR');
+
+  const signup = () => {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    users.push({ email, password, role });
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Account created successfully');
+>>>>>>> origin/HL-01
   };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/HL-01
         {/* LOGO */}
         <img
           src="https://pixalara.com/apple-touch-icon.png"
@@ -75,7 +96,11 @@ const Signup = () => {
           <span className="lara">LARA</span>
         </h1>
 
+<<<<<<< HEAD
         <h2 style={{ marginBottom: "20px" }}>Sign Up</h2>
+=======
+        <h2 style={{ marginBottom: '20px' }}>Sign Up</h2>
+>>>>>>> origin/HL-01
 
         <input
           type="email"
@@ -92,6 +117,7 @@ const Signup = () => {
         />
 
         <select value={role} onChange={e => setRole(e.target.value)}>
+<<<<<<< HEAD
           <option value="hr">HR</option>
           <option value="admin">Admin</option>
         </select>
@@ -103,10 +129,25 @@ const Signup = () => {
         <p style={{ marginTop: "18px" }}>
           Already have an account? <Link to="/login">Login</Link>
         </p>
+=======
+          <option value="HR">HR</option>
+          <option value="Admin">Admin</option>
+        </select>
+
+        <button onClick={signup}>Create Account</button>
+
+        <p style={{ marginTop: '18px' }}>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+
+>>>>>>> origin/HL-01
       </div>
     </div>
   );
 };
 
 export default Signup;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/HL-01

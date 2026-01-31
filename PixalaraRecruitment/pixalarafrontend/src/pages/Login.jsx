@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "../supabaseClient";
@@ -71,25 +72,57 @@ const Login = () => {
     }
 
     setLoading(false);
+=======
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import '../App.css';
+
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const login = () => {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (!user) return alert('Invalid email or password');
+
+    if (user.role === 'Admin') navigate('/admin-dashboard');
+    else if (user.role === 'HR') navigate('/hr-dashboard');
+>>>>>>> origin/HL-01
   };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
+<<<<<<< HEAD
         {/* LOGO */}
+=======
+
+        {/* SAME LOGO IMAGE */}
+>>>>>>> origin/HL-01
         <img
           src="https://pixalara.com/apple-touch-icon.png"
           alt="PIXA LARA"
           className="logo"
         />
 
+<<<<<<< HEAD
         {/* BRAND */}
+=======
+        {/* COMPANY NAME */}
+>>>>>>> origin/HL-01
         <h1 className="brand">
           <span className="pix">PIXA</span>
           <span className="lara">LARA</span>
         </h1>
 
+<<<<<<< HEAD
         <h2 style={{ marginBottom: "20px" }}>Login</h2>
+=======
+        <h2 style={{ marginBottom: '20px' }}>Login</h2>
+>>>>>>> origin/HL-01
 
         <input
           type="email"
@@ -105,6 +138,7 @@ const Login = () => {
           onChange={e => setPassword(e.target.value)}
         />
 
+<<<<<<< HEAD
         <button onClick={login} disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
@@ -112,11 +146,23 @@ const Login = () => {
         <p style={{ marginTop: "18px" }}>
           Don’t have an account? <Link to="/signup">Sign Up</Link>
         </p>
+=======
+        <button onClick={login}>Login</button>
+
+        <p style={{ marginTop: '18px' }}>
+          Don’t have an account? <Link to="/signup">Sign Up</Link>
+        </p>
+
+>>>>>>> origin/HL-01
       </div>
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default Login;
 
 
+=======
+export default Login;
+>>>>>>> origin/HL-01
